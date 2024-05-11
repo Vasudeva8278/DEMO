@@ -5,7 +5,7 @@ from .models import Reg_Employee
 
 class RegEmployeeAdmin(admin.ModelAdmin):
     # shown required fields on admin site
-    list_display = ('name', 'email', 'age', 'gender')
+    list_display =  ('name', 'email', 'age', 'gender', 'phone_no')
 
 
 admin.site.register(Reg_Employee, RegEmployeeAdmin)
