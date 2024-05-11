@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import pymysql
+import os
+
+pymysql.version_info = (2,2,0,'final',0)
+pymysql.install_as_MySQLdb()
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ORM',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +64,8 @@ ROOT_URLCONF = 'employee.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), 
+                 os.path.join(BASE_DIR, 'venv/Lib/site-packages/rest_framework/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,7 +87,7 @@ WSGI_APPLICATION = 'employee.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vasudev',
+        'NAME': 'demo',
         'USER': 'root',
         'PASSWORD': 'vasu@1234',
         'HOST': 'localhost',
