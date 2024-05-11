@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table id="employee-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone No</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Employee data will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', fetchData);
+
+        function fetchData() {
+            fetch('/get/')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('employee-table').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = '';
+                data.forEach(employee => {
+                    const row = tableBody.insertRow();
+                    row.insertCell(0).innerText = employee.name;
+                    row.insertCell(1).innerText = employee.email;
+                    row.insertCell(2).innerText = employee.age;
+                    row.insertCell(3).innerText = employee.gender;
+                    row.insertCell(4).innerText = employee.phone_no;
+                    const actionsCell = row.insertCell(5);
+                    const updateButton = document.createElement('button');
+                    updateButton.innerText = 'Update';
+                    updateButton.addEventListener('click', () => {
+                        // Handle update action
+                    });
+                    const deleteButton = document.createElement('button');
+                    deleteButton.innerText = 'Delete';
+                    deleteButton.addEventListener('click', () => {
+                        // Handle delete action
+                    });
+                    actionsCell.appendChild(updateButton);
+                    actionsCell.appendChild(deleteButton);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+    </script>
+</body>
+</html>
+
+
+

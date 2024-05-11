@@ -6,16 +6,17 @@ from django.db import models
 
 
 # this is the create employee table
-class Employee(models.Model):
+class Reg_Employee(models.Model):
+    id=models.IntegerField(null=False,primary_key=True)
     name = models.CharField(max_length=200)
     email = models.EmailField()
     age = models.IntegerField()
     gender = models.CharField(max_length=10)
     phone_no = models.CharField(max_length=10)
-    address_details = models.TextField()
+    address = models.TextField(null=True)
     hno = models.CharField(max_length=100)
     street = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
+    city = models.CharField(max_length=200,null=True)
     state = models.CharField(max_length=200)
     work_experience = models.IntegerField() 
     company_name = models.CharField(max_length=200)  
@@ -27,12 +28,8 @@ class Employee(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     photo = models.ImageField()
-
     
-    
-    
-    
-    
+   
     
     
     
