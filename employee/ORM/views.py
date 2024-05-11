@@ -56,14 +56,7 @@ def get_data(request):
     
         
         
-        
-# Define your view function
-def employee_data_page(request):
-    return render(request, 'getdata.html')
-
-
-
-
+ 
 
 # delete employee data class
 class DeleteAPIView(APIView):

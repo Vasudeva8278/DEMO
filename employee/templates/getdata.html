@@ -76,18 +76,20 @@
         }
 
         function handleDelete(employeeId) {
-            fetch(`/delete/${employeeId}`, {
-                method: 'DELETE'
-            })
-            .then(response => {
-                if (response.ok) {
-                    fetchData(); // Refresh data after successful delete
-                } else {
-                    throw new Error('Failed to delete employee');
-                }
-            })
-            .catch(error => console.error('Error deleting employee:', error));
+    fetch(`/delete/${employeeId}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Employee deleted successfully');
+            fetchData(); // Refresh data after successful delete
+        } else {
+            throw new Error('Failed to delete employee');
         }
+    })
+    .catch(error => console.error('Error deleting employee:', error));
+}
+
     </script>
 </body>
 </html>
